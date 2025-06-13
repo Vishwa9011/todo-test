@@ -1,71 +1,13 @@
-body {
-  font-family: Arial, sans-serif;
-  background: #f6f7fb;
-  margin: 0;
-  padding: 0;
-}
-.todo-container {
-  background: #fff;
-  max-width: 400px;
-  margin: 60px auto;
-  padding: 24px 30px 30px 30px;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-}
-h1 {
-  text-align: center;
-  margin-bottom: 28px;
-}
-.input-section {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-#todo-input {
-  flex: 1;
-  padding: 8px 12px;
-  font-size: 16px;
-  border: 1px solid #ced4da;
-  border-radius: 4px;
-}
-#add-btn {
-  padding: 8px 18px;
-  background: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-#add-btn:hover {
-  background: #0056b3;
-}
-#todo-list {
-  list-style: none;
-  padding-left: 0;
-}
-#todo-list li {
-  background: #f1f3f4;
-  margin-bottom: 10px;
-  padding: 10px 16px;
-  border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-#todo-list li.completed {
-  text-decoration: line-through;
-  color: #a0a0a0;
-  background: #e9ecef;
-}
-.delete-btn {
-  background: #dc3545;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  padding: 5px 13px;
-  cursor: pointer;
-  font-size: 13px;
-  margin-left: 10px;
-}
+body { background: #f9f9f9; font-family: Arial, sans-serif; }
+.todo-container { width: 350px; margin: 50px auto; background: #fff; padding: 2em 2em 1em 2em; border-radius: 8px; box-shadow: 0 0 10px #ccc; }
+h1 { text-align: center; margin-bottom: 1em; }
+.add-todo { display: flex; gap: 10px; margin-bottom: 1em; }
+#todo-input { flex: 1; padding: 0.5em; border: 1px solid #ccc; border-radius: 4px; }
+#add-btn { padding: 0.5em 1em; border: none; background: #007bff; color: #fff; border-radius: 4px; cursor: pointer; }
+#add-btn:hover { background: #0056b3; }
+#todo-list { list-style: none; padding: 0; }
+#todo-list li { display: flex; justify-content: space-between; align-items: center; background: #f5f5f5; padding: 0.5em; border-radius: 4px; margin-bottom: 0.5em; }
+#todo-list li.completed span { text-decoration: line-through; color: #888; }
+.todo-actions button { margin-left: 5px; border: none; background: none; cursor: pointer; color: #dc3545; }
+.todo-actions button.mark { color: #28a745; }
+.todo-actions button:hover { text-decoration: underline; }

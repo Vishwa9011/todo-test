@@ -1,42 +1,38 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const input = document.getElementById('todo-input');
-  const addBtn = document.getElementById('add-btn');
-  const todoList = document.getElementById('todo-list');
+    const input = document.getElementById('todo-input');
+    const addBtn = document.getElementById('add-btn');
+    const todoList = document.getElementById('todo-list');
 
-  function createTodo(text) {
-    const li = document.createElement('li');
+    function addTodo() {
+        const value = input.value.trim();
+        if (!value) return;
+        const li = document.createElement('li');
+        const span = document.createElement('span');
+        span.textContent = value;
+        li.appendChild(span);
 
-    li.textContent = text;
-    li.addEventListener('click', function(e) {
-      if (e.target.className !== 'delete-btn') {
-        li.classList.toggle('completed');
-      }
+        const actions = document.createElement('div');
+        actions.className = 'todo-actions';
+        const markBtn = document.createElement('button');
+        markBtn.textContent = '✓';
+        markBtn.className = 'mark';
+        markBtn.onclick = () => {
+            li.classList.toggle('completed');
+        };
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = '🗑';
+        deleteBtn.onclick = () => {
+            todoList.removeChild(li);
+        };
+        actions.appendChild(markBtn);
+        actions.appendChild(deleteBtn);
+        li.appendChild(actions);
+        todoList.appendChild(li);
+        input.value = '';
+    }
+
+    addBtn.addEventListener('click', addTodo);
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') addTodo();
     });
-
-    const delBtn = document.createElement('button');
-    delBtn.textContent = 'Delete';
-    delBtn.className = 'delete-btn';
-    delBtn.onclick = function(e) {
-      e.stopPropagation();
-      todoList.removeChild(li);
-    };
-
-    li.appendChild(delBtn);
-    todoList.appendChild(li);
-  }
-
-  addBtn.onclick = function() {
-    const value = input.value.trim();
-    if (value) {
-      createTodo(value);
-      input.value = '';
-      input.focus();
-    }
-  };
-
-  input.addEventListener('keydown', function(e) {
-    if (e.key === 'Enter') {
-      addBtn.onclick();
-    }
-  });
 });
