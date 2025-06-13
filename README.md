@@ -1,1 +1,10 @@
-IyBUb2RvIEFwcCBmb3IgVmlzaHdhOTAxMQoKQSByZXNwb25zaXZlIFRvZG8gYXBwIHdpdGggY29yZSBmZWF0dXJlczogYWRkLCBkZWxldGUsIGFuZCBtYXJrIGFzIGRvbmUuCgpIb3cgdG8gdXNlOgoKMS4gRG93bmxvYWQgdGhlIHByb2plY3QgdG8gbG9jYWwgb3BlbiBpbmRleC5odG1sLgoyLiBBZGQgdG9kb3MgaW4gdGhlIGlucHV0IGZpZWxkIGFuZCBjbGljayAnQWRkJyBvciBoaXQgRW50ZXIuCjMuIENsaWNrIHRoZSBoZWFydCBidXR0b24gdG8gbWFyayB0aGVtIGFzIGNvbXBsZXRlLgoyLiBDbGljayAiRGVsZXRlIiB0byByZW1vdmUgdGhlIHRvZG8uCgpUaGlzIGFwcCBpcyBidWlsdCB3aXRoIEhUTUwsIENTUywgYW5kIEphdmFTY3JpcHQu
+# Todo App
+
+A simple, fully functional todo app using HTML, CSS, and JS.
+
+**Features:**
+- Add a new todo
+- Mark todo as completed
+- Delete todo
+
+Open index.html in your browser to use the app.

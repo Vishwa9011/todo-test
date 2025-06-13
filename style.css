@@ -1,1 +1,67 @@
-LyoqIFRvZG8gQXBwIFN0eWxlICovCmh0bWwsIGJvZHkgewogIGhlaWdodDogMTAwdmg7CiAgbWFyZ2luOiAwOwogIHBhZGRpbmc6IDA7CiAgYmFja2dyb2xvcjogI2Y2ZjsKfQoudG9kby1hcHAtY29udGFpbmVyIHsKICBtYXJnaW46IDQwcHggYXV0bzsKICBtYXgtd2lkdGg6IDQwMHB4OwogIGJveC1zaGFkb3c6IDAgMCAxMHB4IHJnYmEoMCwwLDAsZjAuMSk7CiAgYmFja2dyb3VuZDogI2ZmZjsKICBwYWRkaW5nOiAyNHB4OwogIGJvcmRlci1yYWRpdXM6IDhweDsKfQoKaDEgewogIGNvbG9yOiAjNTQ3YmFkOwogIHRleHQtYWxpZ246IGNlbnRlcjsKICBtYXJnaW4tYm90dG9tOiAyMHB4Owp9CgphZGQtYXJlYSB7CiAgZGlzcGxheTogZmxleDsKICBtYXJnaW4tYm90dG9tOiAxNHB4Owp9CgppbnB1dCB7CiAgYm94LXNpemluZzogYm9yZGVyLWJveDsKICByZXNpemU6IDA7CiAgZm9udC1zaXplOiAxNHB4OwogIG1hcmdpbi1yaWdodDogNHB4Owp9CgpidXR0b24gewogIGJhY2tncm91bmQ6ICM1NDdiYWQ7CiAgY29sb3I6ICNmZmY7CiAgYm9yZGVyOiBub25lOwogIGJvcmRlci1yYWRpdXM6IDRweDsKICBwYWRkaW5nOiA2cHggMTJweDsKICBjdXJzb3I6IHBvaW50ZXI7CiAgbWFyZ2luLWxlZnQ6IDVweDsKfQoKdWwgewogIHBhZGRpbmc6IDA7CiAgbGlzdC1zdHlsZTogbm9uZTsKfQoKdWwgbGkgewogIGRpc3BsYXk6IGZsZXg7CiAgYWxpZ24taXRlbXM6IGNlbnRlcjsKICBiYWNrZ3JvdW5kOiAjZGVlOwogIG1hcmdpbi1ib3R0b206IDJweDsKICBwYWRkaW5nOiAycHg4cHg7CiAgYm9yZGVyLXJhZGl1czogNHB4Owp9Cg5saS5kb25lIHsKICB0ZXh0LWRlY29yYXRpb246IHRocm91Z2g7CiAgY29sb3I6ICNjY2M7CiAgdGV4dC1kZWNvcmF0aW9uOiBsaW5lLXRocm91Z2g7Cn0KCi50b2RvLWl0ZW0tdGV4dCB7CiAgZmxleC1ncm93OiAxOyBtYXgtd2lkdGg6IDc1JTsKfQoKdXR0b24uZGVsZXRlLWJ0biB7CiAgYmFja2dyb3VuZDogI2M0MzQzNDsKICBjb2xvcjogI2ZmZjsKICBtYXJnaW4tbGVmdDogOHB4Owp9Cg==
+body {
+  font-family: Arial, sans-serif;
+  background: #f6f7fb;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 100%;
+  max-width: 400px;
+  margin: 50px auto;
+  box-shadow: 0 2px 10px #ccc;
+  background: #fff;
+  border-radius: 8px;
+  padding: 24px 20px 30px 20px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+}
+.todo-input {
+  display: flex;
+  margin-bottom: 16px;
+}
+#new-task {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+}
+#add-task {
+  padding: 8px 16px;
+  border: none;
+  background: #38a169;
+  color: #fff;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+#add-task:hover {
+  background: #2f855a;
+}
+#todo-list {
+  list-style: none;
+  padding: 0;
+}
+#todo-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 8px 6px;
+  border-bottom: 1px solid #f0f0f0;
+}
+#todo-list li.completed span {
+  text-decoration: line-through;
+  color: #aaa;
+}
+.delete {
+  margin-left: auto;
+  background: #e53e3e;
+  color: #fff;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.delete:hover {
+  background: #c53030;
+}

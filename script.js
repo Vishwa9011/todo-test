@@ -1,2 +1,43 @@
-ZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKCkgewogIGxhZHlQcm9jZXNzKCk7Cn0pOwpmdW5jdGlvbiBsYWR5UHJvY2VzcygpIHsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbmV3dG9kbycpLmFkZEV2ZW50TGlzdGVuZXIoJ2tleXVwJywgZnVuY3Rpb24oZSkgewogICAgaWYgKGUua2V5ID09PSAnRW50ZXInKSB7CiAgICAgIGFkZFRvZG8oKTsKICB9CiAgfSk7Cn0KZnVuY3Rpb24gYWRkVG9kbygpIHsKICBsZXQgaW5wdXQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbmV3dG9kbycpOwogIGxldCB2YWx1ZSA9IGlucHV0LnZhbHVlLnRyaW0oKTsKICBpZiAodmFsdWUubGVuZ3RoID09PSAwKSB7IHJldHVybjsgfQogIGxldCBsaSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2xpJyk7CiAgbGV0IHNwYW4gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdzcGFuJyk7CiAgc3Bhbi5jbGFzc05hbWUgPSAndG9kby1pdGVtLXRleHQnOwogIHNwYW4udGV4dENvbnRlbnQgPSB2YWx1ZTsKICBsaS5hcHBlbmRDaGlsZChzcGFuKTsKICBsZXQgc3RhdGVCdG4gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdidXR0b24nKTsKICBzdGF0ZUJ0bi50ZXh0Q29udGVudCA9ICYiOy8gY2hlY2sgbWFyayBk
-b25lCiAgc3RhdGVCdG4uY2xhc3NOYW1lID0gJ3RvZG9zdGF0ZWInOwogIHN0YXRlQnRuLnNldEF0dHJpYnV0ZSgndGl0bGUnLCAnTWFyayBkb25lJyk7CiAgc3RhdGVCdG4ub25jbGljayA9IGZ1bmN0aW9uKCkgeyBsaS5jbGFzc0xpc3QuYWRkKCdkb25lJyk7IH07CiAgbGV0IGRlbGV0ZUJ0biA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2J1dHRvbicpOwogIGRlbGV0ZUJ0bi50ZXh0Q29udGVudCA9ICJEZWxldGUiOwogIGRlbGV0ZUJ0bi5jbGFzc05hbWUgPSAiZGVsZXRlLWJ0biI7CiAgZGVsZXRlQnRuLnNldEF0dHJpYnV0ZSgndGl0bGUnLCAiRGVsZXRlIHRoaXMgdG9kbyIpOwogIGRlbGV0ZUJ0bi5vbmNsaWNrID0gZnVuY3Rpb24oKSB7IGxpLnJlbW92ZSgpOyB9OwogIGxpLmFwcGVuZENoaWxkKHN0YXRlQnRuKTsKICBsaS5hcHBlbmRDaGlsZChkZWxldGVCdG4pOwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd0b2RvbGlzdCcpLmFwcGVuZENoaWxkKGxpKTsKICBpbnB1dC52YWx1ZSA9ICIiOwp9Cg==
+document.addEventListener('DOMContentLoaded', function() {
+  const newTask = document.getElementById('new-task');
+  const addTaskBtn = document.getElementById('add-task');
+  const todoList = document.getElementById('todo-list');
+
+  // Add new task
+  addTaskBtn.addEventListener('click', function() {
+    if (newTask.value.trim() !== '') {
+      addTodo(newTask.value.trim());
+      newTask.value = '';
+    }
+  });
+
+  newTask.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      addTaskBtn.click();
+    }
+  });
+
+  function addTodo(task) {
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    span.textContent = task;
+    span.style.cursor = 'pointer';
+    li.appendChild(span);
+
+    // Toggle completed
+    span.addEventListener('click', function() {
+      li.classList.toggle('completed');
+    });
+
+    // Delete button
+    const delBtn = document.createElement('button');
+    delBtn.textContent = 'Delete';
+    delBtn.className = 'delete';
+    delBtn.addEventListener('click', function() {
+      todoList.removeChild(li);
+    });
+    li.appendChild(delBtn);
+
+    todoList.appendChild(li);
+  }
+});
