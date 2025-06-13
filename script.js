@@ -1,43 +1,42 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const newTask = document.getElementById('new-task');
-  const addTaskBtn = document.getElementById('add-task');
+  const input = document.getElementById('todo-input');
+  const addBtn = document.getElementById('add-btn');
   const todoList = document.getElementById('todo-list');
 
-  // Add new task
-  addTaskBtn.addEventListener('click', function() {
-    if (newTask.value.trim() !== '') {
-      addTodo(newTask.value.trim());
-      newTask.value = '';
-    }
-  });
-
-  newTask.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') {
-      addTaskBtn.click();
-    }
-  });
-
-  function addTodo(task) {
+  function createTodo(text) {
     const li = document.createElement('li');
-    const span = document.createElement('span');
-    span.textContent = task;
-    span.style.cursor = 'pointer';
-    li.appendChild(span);
 
-    // Toggle completed
-    span.addEventListener('click', function() {
-      li.classList.toggle('completed');
+    li.textContent = text;
+    li.addEventListener('click', function(e) {
+      if (e.target.className !== 'delete-btn') {
+        li.classList.toggle('completed');
+      }
     });
 
-    // Delete button
     const delBtn = document.createElement('button');
     delBtn.textContent = 'Delete';
-    delBtn.className = 'delete';
-    delBtn.addEventListener('click', function() {
+    delBtn.className = 'delete-btn';
+    delBtn.onclick = function(e) {
+      e.stopPropagation();
       todoList.removeChild(li);
-    });
-    li.appendChild(delBtn);
+    };
 
+    li.appendChild(delBtn);
     todoList.appendChild(li);
   }
+
+  addBtn.onclick = function() {
+    const value = input.value.trim();
+    if (value) {
+      createTodo(value);
+      input.value = '';
+      input.focus();
+    }
+  };
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      addBtn.onclick();
+    }
+  });
 });
