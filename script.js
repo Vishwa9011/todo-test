@@ -1,38 +1,24 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const input = document.getElementById('todo-input');
-    const addBtn = document.getElementById('add-btn');
-    const todoList = document.getElementById('todo-list');
-
-    function addTodo() {
-        const value = input.value.trim();
-        if (!value) return;
-        const li = document.createElement('li');
-        const span = document.createElement('span');
-        span.textContent = value;
-        li.appendChild(span);
-
-        const actions = document.createElement('div');
-        actions.className = 'todo-actions';
-        const markBtn = document.createElement('button');
-        markBtn.textContent = '✓';
-        markBtn.className = 'mark';
-        markBtn.onclick = () => {
-            li.classList.toggle('completed');
-        };
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = '🗑';
-        deleteBtn.onclick = () => {
-            todoList.removeChild(li);
-        };
-        actions.appendChild(markBtn);
-        actions.appendChild(deleteBtn);
-        li.appendChild(actions);
-        todoList.appendChild(li);
-        input.value = '';
-    }
-
-    addBtn.addEventListener('click', addTodo);
-    input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter') addTodo();
-    });
+function addTodo() {
+  const input = document.getElementById('newTodo');
+  const text = input.value.trim();
+  if (!text) return;
+  const li = document.createElement('li');
+  const span = document.createElement('span');
+  span.classList.add('todo-text');
+  span.textContent = text;
+  span.onclick = function () {
+    li.classList.toggle('completed');
+  };
+  const delBtn = document.createElement('button');
+  delBtn.textContent = 'Delete';
+  delBtn.onclick = function () {
+    li.remove();
+  };
+  li.appendChild(span);
+  li.appendChild(delBtn);
+  document.getElementById('todoList').appendChild(li);
+  input.value = '';
+}
+document.getElementById('newTodo').addEventListener('keyup', function(event) {
+  if (event.key === 'Enter') addTodo();
 });

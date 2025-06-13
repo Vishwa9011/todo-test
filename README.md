@@ -1,11 +1,10 @@
 # Todo App
 
-A simple and fully functional Todo app using HTML, CSS, and JavaScript.
+A simple, fully functional todo application using HTML, CSS, and JavaScript.
 
-**Features:**
-- Add tasks
-- Mark tasks as done
-- Delete tasks
+## Features
+- Add, delete, and mark tasks as completed.
+- Responsive and clean UI.
 
 ## Usage
-Open `index.html` in your browser to start using the app.
+Open `index.html` in your browser to use the app.
