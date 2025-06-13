@@ -1,59 +1,54 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const todoList = document.getElementById('todo-list');
-  const newTodo = document.getElementById('new-todo');
+  const input = document.getElementById('todo-input');
   const addBtn = document.getElementById('add-btn');
-  let todos = [];
+  const list = document.getElementById('todo-list');
 
-  function renderTodos() {
-    todoList.innerHTML = '';
-    todos.forEach((todo, idx) => {
-      const li = document.createElement('li');
-      li.className = 'todo-item' + (todo.completed ? ' completed' : '');
+  function addTodo(text) {
+    const li = document.createElement('li');
+    li.className = 'todo-item';
 
-      const span = document.createElement('span');
-      span.textContent = todo.text;
-      li.appendChild(span);
+    const span = document.createElement('span');
+    span.className = 'todo-text';
+    span.textContent = text;
+    li.appendChild(span);
 
-      const actions = document.createElement('div');
-      actions.className = 'todo-actions';
+    const actions = document.createElement('div');
+    actions.className = 'todo-actions';
 
-      const completeBtn = document.createElement('button');
-      completeBtn.textContent = todo.completed ? 'Undo' : 'Done';
-      completeBtn.className = 'complete-btn';
-      completeBtn.onclick = () => {
-        todos[idx].completed = !todos[idx].completed;
-        renderTodos();
-      };
-      actions.appendChild(completeBtn);
+    const doneBtn = document.createElement('button');
+    doneBtn.textContent = '✔';
+    doneBtn.className = 'done-btn';
+    doneBtn.title = 'Mark as done';
+    doneBtn.onclick = () => {
+      li.classList.toggle('completed');
+    };
+    actions.appendChild(doneBtn);
 
-      const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = 'Delete';
-      deleteBtn.className = 'delete-btn';
-      deleteBtn.onclick = () => {
-        todos.splice(idx, 1);
-        renderTodos();
-      };
-      actions.appendChild(deleteBtn);
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '🗑';
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.title = 'Delete';
+    deleteBtn.onclick = () => {
+      li.remove();
+    };
+    actions.appendChild(deleteBtn);
 
-      li.appendChild(actions);
-      todoList.appendChild(li);
-    });
+    li.appendChild(actions);
+    list.appendChild(li);
   }
 
   addBtn.onclick = () => {
-    const text = newTodo.value.trim();
+    const text = input.value.trim();
     if (text) {
-      todos.unshift({ text, completed: false });
-      newTodo.value = '';
-      renderTodos();
+      addTodo(text);
+      input.value = '';
+      input.focus();
     }
   };
 
-  newTodo.addEventListener('keypress', e => {
+  input.addEventListener('keyup', e => {
     if (e.key === 'Enter') {
       addBtn.click();
     }
   });
-
-  renderTodos();
 });
