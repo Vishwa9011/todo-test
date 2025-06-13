@@ -1,39 +1,44 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const todoForm = document.getElementById('todo-form');
-    const todoInput = document.getElementById('todo-input');
-    const todoList = document.getElementById('todo-list');
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('todo-form');
+  const input = document.getElementById('new-todo');
+  const list = document.getElementById('todo-list');
 
-    function addTodo(text) {
-        const li = document.createElement('li');
-        const span = document.createElement('span');
-        span.textContent = text;
-        li.appendChild(span);
-        
-        // Complete/uncomplete functionality
-        li.addEventListener('click', function (e) {
-            if (e.target !== li.querySelector('.delete-btn')) {
-                li.classList.toggle('completed');
-            }
-        });
+  let todos = [];
 
-        // Delete button
-        const btn = document.createElement('button');
-        btn.textContent = 'Delete';
-        btn.className = 'delete-btn';
-        btn.addEventListener('click', function (e) {
-            e.stopPropagation();
-            li.remove();
-        });
-        li.appendChild(btn);
-        todoList.appendChild(li);
-    }
+  function render() {
+    list.innerHTML = '';
+    todos.forEach((todo, idx) => {
+      const li = document.createElement('li');
+      li.className = 'todo-item' + (todo.done ? ' done' : '');
+      const span = document.createElement('span');
+      span.innerText = todo.text;
+      span.style.cursor = 'pointer';
+      span.onclick = () => {
+        todos[idx].done = !todos[idx].done;
+        render();
+      };
+      li.appendChild(span);
 
-    todoForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const value = todoInput.value.trim();
-        if (value) {
-            addTodo(value);
-            todoInput.value = '';
-        }
+      const btn = document.createElement('button');
+      btn.innerText = 'Delete';
+      btn.className = 'delete-btn';
+      btn.onclick = () => {
+        todos.splice(idx, 1);
+        render();
+      };
+      li.appendChild(btn);
+
+      list.appendChild(li);
     });
+  }
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const txt = input.value.trim();
+    if (txt) {
+      todos.push({ text: txt, done: false });
+      input.value = '';
+      render();
+    }
+  });
+  render();
 });
