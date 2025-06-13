@@ -1,32 +1,43 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('todo-form');
-    const input = document.getElementById('todo-input');
-    const list = document.getElementById('todo-list');
+  const form = document.getElementById('todo-form');
+  const input = document.getElementById('todo-input');
+  const list = document.getElementById('todo-list');
 
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const task = input.value.trim();
-        if (task) {
-            addTodo(task);
-            input.value = '';
-        }
-    });
+  function createTodoItem(text) {
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    span.textContent = text;
+    li.appendChild(span);
+    const actions = document.createElement('div');
+    actions.className = "todo-actions";
 
-    function addTodo(text) {
-        const li = document.createElement('li');
-        const span = document.createElement('span');
-        span.textContent = text;
-        span.addEventListener('click', function() {
-            span.classList.toggle('completed');
-        });
-        li.appendChild(span);
-        const delBtn = document.createElement('button');
-        delBtn.textContent = '✗';
-        delBtn.className = 'delete-btn';
-        delBtn.addEventListener('click', function() {
-            list.removeChild(li);
-        });
-        li.appendChild(delBtn);
-        list.appendChild(li);
+    const doneBtn = document.createElement('button');
+    doneBtn.textContent = '✔';
+    doneBtn.classList.add('done');
+    doneBtn.title = "Mark as done";
+    doneBtn.onclick = () => {
+      li.classList.toggle('completed');
+    };
+    actions.appendChild(doneBtn);
+
+    const delBtn = document.createElement('button');
+    delBtn.textContent = '✖';
+    delBtn.title = "Delete";
+    delBtn.onclick = () => {
+      list.removeChild(li);
+    };
+    actions.appendChild(delBtn);
+    li.appendChild(actions);
+    return li;
+  }
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (text) {
+      const todo = createTodoItem(text);
+      list.appendChild(todo);
+      input.value = '';
     }
+  });
 });

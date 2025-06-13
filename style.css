@@ -1,81 +1,11 @@
-body {
-  background: #f2f2f2;
-  font-family: Arial, sans-serif;
-}
-.container {
-  max-width: 400px;
-  background: #fff;
-  margin: 40px auto 0 auto;
-  padding: 32px 24px;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.09);
-}
-h1 {
-  text-align: center;
-  color: #4a4a4a;
-  margin-bottom: 18px;
-}
-.input-group {
-  display: flex;
-  gap: 8px;
-}
-#todo-input {
-  flex: 1;
-  padding: 10px 12px;
-  border: 1px solid #ddd;
-  outline: none;
-  border-radius: 6px;
-  font-size: 1rem;
-}
-#add-btn {
-  padding: 10px 16px;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: none;
-  background: #07c; color: #fff;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-#add-btn:hover {
-  background: #0090d9;
-}
-#todo-list {
-  margin-top: 24px;
-  list-style: none;
-  padding: 0;
-}
-.todo-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-}
-.todo-item:last-child {
-  border-bottom: none;
-}
-.todo-text {
-  flex: 1;
-  color: #3b395c;
-  font-size: 1rem;
-}
-.completed .todo-text {
-  text-decoration: line-through;
-  color: #888;
-}
-.todo-actions {
-  display: flex;
-  gap: 8px;
-}
-.delete-btn, .done-btn {
-  border: none;
-  background: none;
-  cursor: pointer;
-  font-size: 1rem;
-}
-.delete-btn {
-  color: #d00;
-}
-.done-btn {
-  color: #5cb85c;
-}
+body { background: #f4f4f4; font-family: Arial, sans-serif; }
+.container { background: #fff; padding: 2em; max-width: 400px; margin: 80px auto; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+h1 { text-align: center; color: #222; }
+#todo-form { display: flex; }
+#todo-input { flex: 1; padding: 0.5em; border: 1px solid #ccc; border-radius: 4px 0 0 4px; }
+#todo-form button { padding: 0.5em 1em; border: none; background: #4CAF50; color: #fff; border-radius: 0 4px 4px 0; cursor: pointer; }
+#todo-list { list-style: none; padding: 0; margin-top: 1em; }
+#todo-list li { padding: 0.5em; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center; }
+#todo-list li.completed span { text-decoration: line-through; color: #888; }
+.todo-actions button { background: none; border: none; color: #f44336; cursor: pointer; font-size: 1em; }
+.todo-actions button.done { color: #4CAF50; }

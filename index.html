@@ -9,10 +9,10 @@
 <body>
   <div class="container">
     <h1>Todo App</h1>
-    <div class="input-group">
-      <input type="text" id="todo-input" placeholder="Add a new todo...">
-      <button id="add-btn">Add</button>
-    </div>
+    <form id="todo-form">
+      <input type="text" id="todo-input" placeholder="Add a new todo..." required />
+      <button type="submit">Add</button>
+    </form>
     <ul id="todo-list"></ul>
   </div>
   <script src="script.js"></script>
